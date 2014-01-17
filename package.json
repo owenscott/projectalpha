@@ -1,0 +1,31 @@
+{
+  "name": "contract-toolkit",
+  "version": "0.0.0",
+  "description": "An express-based web application for coding open contracting information.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "open",
+    "data",
+    "contract",
+    "procurement"
+  ],
+  "author": "Owen Scott",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~3.4.8",
+    "passport": "~0.1.18",
+    "underscore": "~1.5.2",
+    "passport-local": "~0.1.6",
+    "mongoose": "~3.8.4"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.0",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.8.0",
+    "n": "~1.1.0",
+    "nodemon": "~1.0.8"
+  }
+}

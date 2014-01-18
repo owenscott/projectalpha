@@ -10,21 +10,25 @@ var server = new Hapi.Server('localhost', 8000);
 
 server.pack.require('hapi-auth-cookie', function(err) {
 
-  //set auth strategy for the server using happie autho cookie
-  server.auth.strategy('session', 'cookie', {
-    password: 'secret',
-    cookie: 'contract-toolkit',
-    redirectTo: '/login',
-    isSecure: false
-  });
+	if (err) {
+		throw err;
+	}
 
-  server.route(apiContentRoutes);
-  server.route(apiAdminRoutes);
-  server.route(apiDataRoutes);
+	//set auth strategy for the server using happie autho cookie
+	server.auth.strategy('session', 'cookie', {
+		password: 'secret',
+		cookie: 'contract-toolkit',
+		redirectTo: '/login',
+		isSecure: false
+	});
 
-  server.start(); 
+	server.route(apiContentRoutes);
+	server.route(apiAdminRoutes);
+	server.route(apiDataRoutes);
 
-  console.log('Server listening on port 8000');
-  
+	server.start();
 
-})
+	console.log('Server listening on port 8000');
+	
+
+});

@@ -1,4 +1,4 @@
-var dbConfig = require('./../config/db-config.js');
+var dbConfig = require('./../../config/db-config.js');
 var mongoClient = require('mongodb').MongoClient;
 
 //returns a handler for /api/foo

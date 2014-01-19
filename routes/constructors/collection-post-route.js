@@ -1,4 +1,4 @@
-var dbConfig = require('./../config/db-config.js');
+var dbConfig = require('./../../config/db-config.js');
 var mongoClient = require('mongodb').MongoClient;
 
 var CollectionHandler = function(collection, options) {
@@ -9,8 +9,7 @@ var CollectionHandler = function(collection, options) {
 
 		mongoClient.connect(dbConfig.DB_URL, function(err, db) {
 
-
-		//adds a new object to the db
+			//adds a new object to the db
 			db.collection(collection).insert(request.payload, function (err, data) {
 				if (err) {
 					throw err;
@@ -18,7 +17,6 @@ var CollectionHandler = function(collection, options) {
 				reply(data);
 				db.close();
 			});
-
 
 		});
 

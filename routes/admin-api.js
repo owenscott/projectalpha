@@ -3,7 +3,21 @@
 
 var Hapi = require('hapi');
 var dbConfig = require('./../config/db-config.js');
-var StandardApiEndpoint = require('./../route-constructors/standard-api-endpoint.js');
+var apiConfig = require('./../config/api-config.js');
+var StandardApiEndpoint = require('./constructors/standard-api-endpoint.js');
+
+var userRoutes = new StandardApiEndpoint(apiConfig.USERS_URL, {
+	collection: dbConfig.USERS_COLLECTION,
+	validation: {
+		payload: {
+			name: Hapi.types.String().required(),
+			// id: Hapi.types.Any(),
+			// _id: Hapi.types.Any()
+		}
+	}
+});
+
+module.exports = userRoutes;
 
 
 // var bcrypt = require('bcrypt');
@@ -158,13 +172,3 @@ var StandardApiEndpoint = require('./../route-constructors/standard-api-endpoint
 
 // ];
 
-var userRoutes = new StandardApiEndpoint('/api/users', {
-	collection: dbConfig.USERS_COLLECTION,
-	validation: {
-		payload: {
-			name: Hapi.types.String().required()
-		}
-	}
-});
-
-module.exports = userRoutes;

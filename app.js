@@ -26,7 +26,10 @@ server.pack.require('hapi-auth-cookie', function(err) {
 	server.route(apiAdminRoutes);
 	server.route(apiDataRoutes);
 
+	// console.log(server.table());
+
 	server.start();
+
 
 	console.log('Server listening on port 8000');
 	

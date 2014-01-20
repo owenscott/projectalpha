@@ -26,6 +26,19 @@ server.pack.require('hapi-auth-cookie', function(err) {
 	server.route(apiAdminRoutes);
 	server.route(apiDataRoutes);
 
+
+	var test = function (request, reply) {
+		reply(request.params);
+	};
+	server.route({
+		method: 'GET',
+		path: '/test/{childId}/test/{id}',
+		config: {
+			handler: test,
+			auth: false
+		}
+	});
+
 	// console.log(server.table());
 
 	server.start();

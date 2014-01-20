@@ -14,7 +14,10 @@ var CollectionHandler = function(collection, options) {
 				if (err) {
 					throw err;
 				}
-				reply(data);
+				if (data.length > 1) {
+					console.log('WARN: data.length > 1 on a post response');
+				}
+				reply(data[0]);
 				db.close();
 			});
 

@@ -11,8 +11,8 @@ var userRoutes = new StandardApiEndpoint(apiConfig.USERS_URL, {
 	validation: {
 		payload: {
 			name: Hapi.types.String().required(),
-			// id: Hapi.types.Any(),
-			// _id: Hapi.types.Any()
+			id: Hapi.types.Any(),
+			_id: Hapi.types.Any()
 		}
 	}
 });

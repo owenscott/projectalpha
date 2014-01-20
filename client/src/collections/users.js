@@ -6,11 +6,15 @@ var UserModel = require('./../models/user.js');
 Backbone.$ = $;
 
 module.exports = Backbone.Collection.extend({
+
 	url: '/api/users',
+
 	model: UserModel,
+
 	initialize: function() {
-		// this.fetch();
+		this.fetch();
 	}
+	
 });
 
 

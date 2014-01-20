@@ -6,13 +6,14 @@ var mongoClient = require('mongodb').MongoClient;
 var Handler = function(collection, options) {
 
 	var options = options || {};
+	var options.query = options.query || {};
 
 	return function(request, reply) {
 
 		mongoClient.connect(dbConfig.DB_URL, function(err, db) {
 
 			//queries the db for all documents in the collection, returning all fields except for those excluded
-			db.collection(collection).find( {}, options.projection || {} ).toArray( function (err, data) {
+			db.collection(collection).find( options.query, options.projection || {} ).toArray( function (err, data) {
 				if (err) {
 					throw err;
 				}

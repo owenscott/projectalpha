@@ -123,7 +123,9 @@ module.exports = function (basePath, options) {
 	var filters = options.filters || {},
 			path = basePath || '/',
 			verb = options.verb || 'GET',
-			resourceType = options.resourceType;
+			resourceType = options.resourceType,
+			tags = options.keys || [],
+			description = options.description || 'None';
 
 	if (!resourceType) {
 		throw new Error('No resource type (document or collection) specified for route.');
@@ -163,7 +165,10 @@ module.exports = function (basePath, options) {
 				projection: options.projection || {},
 				resourceType: resourceType
 			}),
-			auth: false
+			validate: options.validation || {},
+			auth: false,
+			tags: tags,
+			description: description
 		}
 	};
 

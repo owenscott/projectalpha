@@ -2,22 +2,31 @@
 //routes in this module serve admin data such as users and also handle login and logout requests
 
 var Hapi = require('hapi');
-var dbConfig = require('./../config/db-config.js');
-var apiConfig = require('./../config/api-config.js');
-var StandardApiEndpoint = require('./constructors/standard-api-endpoint.js');
+var RestEndpointSet = require('./constructors/endpoints.js');
+// var dbConfig = require('./../config/db-config.js');
+// var apiConfig = require('./../config/api-config.js');
 
-var userRoutes = new StandardApiEndpoint(apiConfig.USERS_URL, {
-	collection: dbConfig.USERS_COLLECTION,
-	validation: {
-		payload: {
-			name: Hapi.types.String().required(),
-			id: Hapi.types.Any(),
-			_id: Hapi.types.Any()
-		}
-	}
+
+var userRoutes = new RestEndpointSet('/api', {
+	path: '/users',
+	filters: []//,
+	// validation: {
+	// 	payload: {
+	// 		name: Hapi.types.String().required(),
+	// 		_id: Hapi.types.Any()
+	// 	}
+	// }
 });
 
+
 module.exports = userRoutes;
+
+
+//useful stuff below for re-implementing password hashing
+
+
+
+
 
 
 // var bcrypt = require('bcrypt');

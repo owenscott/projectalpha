@@ -1,10 +1,13 @@
-//lib
+var _ = require('underscore');
 var Hapi = require('hapi');
 
+//constructor (only used here to build the documentation api)
+var RestEndpointSet = require('./routes/constructors/endpoints.js');
+
 //routes
-var apiDataRoutes = require('./routes/data-api.js');
-var apiAdminRoutes = require('./routes/admin-api.js');
-var apiContentRoutes = require('./routes/content-api.js');
+var apiDataRoutes = require('./routes/data-api.js'),
+		apiAdminRoutes = require('./routes/admin-api.js'),
+		apiContentRoutes = require('./routes/content-api.js');
 
 var server = new Hapi.Server('localhost', 8000);
 
@@ -19,27 +22,30 @@ server.pack.require('hapi-auth-cookie', function(err) {
 		password: 'secret',
 		cookie: 'contract-toolkit',
 		redirectTo: '/login',
-		isSecure: false
+		isSecure: false //change to true for https
 	});
 
-	server.route(apiContentRoutes);
+	// server.route(apiContentRoutes);
+	server = apiContentRoutes(server);
 	server.route(apiAdminRoutes);
 	server.route(apiDataRoutes);
 
-
-	var test = function (request, reply) {
-		reply(request.params);
-	};
+	//api documentation route (implemented for now in server to have access to server object)
 	server.route({
 		method: 'GET',
-		path: '/test/{childId}/test/{id}',
+		path: '/api/documentation',
 		config: {
-			handler: test,
-			auth: false
+			handler: function(request, reply) {
+				var table = server.table();
+				reply( _.map(_.pluck(table,'settings'), function(route) {return {path:route.path, method:route.method, description:route.description} } ));
+			},
+			// validation: options.validation || {},
+			auth: false,
+			tags: ['public', 'api'],
+			description: 'Provides automatic documentation of all API routes.'
 		}
+		
 	});
-
-	// console.log(server.table());
 
 	server.start();
 

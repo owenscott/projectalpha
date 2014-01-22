@@ -2,9 +2,9 @@
 /*global it*/
 
 var expect = require('chai').expect;
-var Route = require('./../routes/constructors/collection-get-route.js');
+var Route = require('./../routes/constructors/route.js');
 
-var testRoute = new Route('/foo', {collection:'bar'});
+var testRoute = new Route('/foo', {path: '/bar'});
 
 describe('Route Constructors', function() {
 

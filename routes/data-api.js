@@ -1,17 +1,32 @@
 
-// var Hapi = require('hapi');
+var Hapi = require('hapi');
 var dbConfig = require('./../config/db-config.js');
-var apiConfig = require('./../config/api-config.js');
-var StandardApiEndpoint = require('./constructors/standard-api-endpoint.js');
+var RestEndpointSet = require('./constructors/endpoints.js');
+var _ = require('underscore')
 
-var contractRoutes = new StandardApiEndpoint(apiConfig.CONTRACTS_URL, {
-	collection: dbConfig.CONTRACTS_COLLECTION
+//route will be /api/projects/{projectId}/contracts
+var contractRoutes = new RestEndpointSet('/api', {
+	path: '/contracts',
+	filter: [{projects:'projectId'}]
 });
 
-var projectRoutes = new StandardApiEndpoint(apiConfig.PROJECTS_URL, {
-	collection: dbConfig.PROJECTS_COLLECTION
+//route will be /api/projects
+var projectRoutes = new RestEndpointSet('/api', {
+	path: '/projects',
+	filters: []
 });
 
+//route will be /api/projects/{projectId}/contracts/{contractId}/locations
+var contractLocationRoutes = new RestEndpointSet('/api', {
+	path: '/locations',
+	filters: [{projects:'projectId'}, {contracts:'contractId'}]
+});
 
-module.exports = contractRoutes.concat(projectRoutes);
+//route will be /api/projects/{projectId}/locations
+var projectLocationRoutes = new RestEndpointSet('/api', {
+	path: '/locations',
+	filters: [{projects:'projectId'}]
+})
+
+module.exports = _.union(contractRoutes, projectRoutes, contractLocationRoutes, projectLocationRoutes);
 

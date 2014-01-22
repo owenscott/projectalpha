@@ -29,7 +29,7 @@ module.exports = function(server) {
 	};
 
 	var apiDocumentation = function (request, reply) {
-		var html = '<html><head></head><body><table><thead><tr><th>Route</th><th>Method</th><th>Description</th></thead><tbody>';
+		var html = '<html><head><style>td { border: solid 1px black;}</style></head><body><table style="border: solid 1px black"><thead><tr><th>Route</th><th>Method</th><th>Description</th></thead><tbody>';
 
 		//inject a call to the api to get the documentation
 		server.inject('/api/documentation', function (response) {
@@ -67,7 +67,6 @@ module.exports = function(server) {
 			}
 		}
 	];
-
 
 	//add routes to server
 	server.route(routes);

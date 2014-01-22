@@ -5,15 +5,14 @@ Backbone.$ = $;
 
 module.exports = Backbone.Model.extend({
 
+	idAttribute: '_id',
+
 	initialize: function() {
 		this.bind('change', function() {
 			this.save();
 		});
-	},
-
-	parse: function( response ) {
-		response.id = response._id;
-		return response;
 	}
+
+
 	
 });

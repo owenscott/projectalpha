@@ -33,7 +33,7 @@ module.exports = function(server) {
 
 		//inject a call to the api to get the documentation
 		server.inject('/api/documentation', function (response) {
-			html = html + _.map(JSON.parse(response.payload), function (route) {return '<tr>' + _.map(_.values(route), function(value) {return '<td>' + value + '</td>'}).join('') + '</tr>'});
+			html = html + _.map(JSON.parse(response.payload), function (route) {return '<tr>' + _.map(_.values(route), function(value) {return '<td>' + value + '</td>';}).join('') + '</tr>';});
 			html = html + '</tbody></table></body></html>';
 			reply(html);
 		});

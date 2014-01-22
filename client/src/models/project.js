@@ -10,13 +10,10 @@ module.exports = Backbone.Model.extend({
 
 	idAttribute: '_id',
 
-	parse: function( response ) {
-		response.id = response._id;
-		return response;
-	},
 
 	initialize: function() {
 		this.set('contracts', new ContractCollection());
+		this.get('contracts').url = '/api/projects/' + this.get('_id') + '/contracts';
 	}
 
 

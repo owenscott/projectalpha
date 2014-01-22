@@ -23,7 +23,7 @@ var RequestHandler = function(collection, options) {
 			//create object for document requests by merging the payload and parameters
 			//payload = the json data sent via a post or put request
 			//params = everything that was in the URL string (excluding the final )
-			if (request.params._id) {
+			if (request.params && request.params._id) {
 				request.params._id = mongoObjectId(request.params._id);
 			}
 			var requestObject = _.extend( request.params || {}, request.payload || {});
@@ -45,6 +45,7 @@ var RequestHandler = function(collection, options) {
 					if (err) {
 						throw err;
 					}
+					console.log(JSON.stringify(data));
 					//replies data[0] because backbone expects a json object and mongo returns an array with one object
 					reply(data[0]);
 					db.close();

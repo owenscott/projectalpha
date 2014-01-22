@@ -9,12 +9,7 @@ Backbone.$ = $;
 
 module.exports = Backbone.Collection.extend({
 	
-	url: this.test,
-
-	test: function() {
-		console.log(arguments);
-	},
-
+	// url: '/foo',
 	model: ProjectModel,
 
 	initialize: function() {

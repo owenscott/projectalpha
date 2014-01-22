@@ -2,7 +2,7 @@
 var Hapi = require('hapi');
 var dbConfig = require('./../config/db-config.js');
 var RestEndpointSet = require('./constructors/endpoints.js');
-var _ = require('underscore')
+var _ = require('underscore');
 
 //route will be /api/projects/{projectId}/contracts
 var contractRoutes = new RestEndpointSet('/api', {
@@ -26,7 +26,7 @@ var contractLocationRoutes = new RestEndpointSet('/api', {
 var projectLocationRoutes = new RestEndpointSet('/api', {
 	path: '/locations',
 	filters: [{projects:'projectId'}]
-})
+});
 
 module.exports = _.union(contractRoutes, projectRoutes, contractLocationRoutes, projectLocationRoutes);
 

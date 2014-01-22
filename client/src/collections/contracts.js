@@ -7,10 +7,7 @@ Backbone.$ = $;
 
 module.exports = Backbone.Collection.extend({
 	
-	url: '/api/contracts',
-	
 	model: ContractModel,
-
 
 	initialize: function() {
 		this.on('change', this.saveModel, this);

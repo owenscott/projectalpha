@@ -37,7 +37,7 @@ server.pack.require('hapi-auth-cookie', function(err) {
 		config: {
 			handler: function(request, reply) {
 				var table = server.table();
-				reply( _.map(_.pluck(table,'settings'), function(route) {return {path:route.path, method:route.method, description:route.description} } ));
+				reply( _.map(_.pluck(table,'settings'), function(route) {return {path:route.path, method:route.method, description:route.description}; } ));
 			},
 			// validation: options.validation || {},
 			auth: false,
@@ -46,6 +46,10 @@ server.pack.require('hapi-auth-cookie', function(err) {
 		}
 		
 	});
+
+
+
+
 
 	server.start();
 

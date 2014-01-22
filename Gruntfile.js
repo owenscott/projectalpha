@@ -30,3 +30,4 @@ grunt.loadNpmTasks('grunt-browserify');
 
 // Default task.
 grunt.registerTask('default', ['jshint', 'browserify']);
+grunt.registerTask('build', ['browserify']);

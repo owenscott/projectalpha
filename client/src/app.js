@@ -21,9 +21,13 @@ var ProjectModel = require('./models/project.js');
 	// project.get('contracts').models[0].set('amount', 50000);
 	// projects.add(project);
 	var projects = new ProjectCollection();
+	projects.url = '/api/projects';
+	projects.fetch();
+	projects.url = '/api/projects';
+	var project = projects.create({name:'Learning PUT'}, {wait:true});
+	console.log(project);
+	console.log(project.url);
 	console.log(projects);
-	console.log(projects.url);
-	projects.url();
 
 	// console.log(projects.models[0]);
 

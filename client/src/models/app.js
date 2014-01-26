@@ -1,7 +1,7 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
 // var ContractModel = require('./contract.js');
-var ContractCollection = require('./../collections/contracts.js');
+var ProjectCollection = require('./../collections/projects.js');
 
 
 Backbone.$ = $;
@@ -12,9 +12,9 @@ module.exports = Backbone.Model.extend({
 
 
 	initialize: function() {
-		// this.set('contracts', new ContractCollection());
-		// this.get('contracts').url = this.url() + this.get('_id') + '/contracts';
-		// this.get('contracts').fetch();
+		this.set('projects', new ProjectCollection());
+		this.get('projects').url = '/api/projects';
+		this.get('projects').fetch();
 	},
 
 	defaults: {

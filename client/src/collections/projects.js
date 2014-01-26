@@ -9,12 +9,10 @@ Backbone.$ = $;
 
 module.exports = Backbone.Collection.extend({
 	
-	// url: '/foo',
 	model: ProjectModel,
 
 	initialize: function() {
-
-		// this.fetch();
+		this.on('sync', function() {console.log('sunk')});
 
 	}
 });

@@ -27,7 +27,6 @@ var RequestHandler = function(collection, options) {
 				request.params._id = mongoObjectId(request.params._id);
 			}
 			var requestObject = _.extend( request.params || {}, request.payload || {});
-			console.log(requestObject);
 
 			//get request for a collection
 			if (request.method === 'get' && options.resourceType === 'collection') {
@@ -35,6 +34,8 @@ var RequestHandler = function(collection, options) {
 					if (err) {
 						throw err;
 					}
+					console.log('A new request for a collection');
+					console.log(requestObject);
 					reply(data);
 					db.close();
 				});

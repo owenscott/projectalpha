@@ -12,7 +12,7 @@ module.exports = Backbone.Collection.extend({
 	model: ProjectModel,
 
 	initialize: function() {
-		this.on('sync', function() {console.log('sunk')});
+		this.on('sync', function() {console.log('sunk'); console.log(this);});
 
 	}
 });

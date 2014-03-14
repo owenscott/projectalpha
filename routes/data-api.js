@@ -16,6 +16,12 @@ var projectRoutes = new RestEndpointSet('/api', {
 	filters: []
 });
 
+//route will be /api/projects/{projectId}/contracts
+var projectContractRoutes = new RestEndpointSet('/api', {
+	path: '/contracts',
+	filters: [{projects:'projectId'}]
+});
+
 //route will be /api/projects/{projectId}/contracts/{contractId}/locations
 var contractLocationRoutes = new RestEndpointSet('/api', {
 	path: '/locations',
@@ -28,5 +34,5 @@ var projectLocationRoutes = new RestEndpointSet('/api', {
 	filters: [{projects:'projectId'}]
 });
 
-module.exports = _.union(contractRoutes, projectRoutes, contractLocationRoutes, projectLocationRoutes);
+module.exports = _.union(contractRoutes, projectRoutes, contractLocationRoutes, projectContractRoutes, projectLocationRoutes);
 

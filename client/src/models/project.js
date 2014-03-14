@@ -12,9 +12,9 @@ module.exports = Backbone.Model.extend({
 
 
 	initialize: function() {
-		// this.set('contracts', new ContractCollection());
-		// this.get('contracts').url = this.url() + this.get('_id') + '/contracts';
-		// this.get('contracts').fetch();
+		this.set('contracts', new ContractCollection());
+		this.get('contracts').url = this.url() + this.get('_id') + '/contracts';
+		this.get('contracts').fetch();
 	},
 
 	defaults: {

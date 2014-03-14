@@ -14,14 +14,10 @@ module.exports = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log('before passing');
-		console.log(this.collection);
 		var listView = new ProjectListView({
 			collection:this.collection,
 			el: this.el
 		});
-		console.log(listView);
-		console.log(this.collection);
 		return this;
 	}
 

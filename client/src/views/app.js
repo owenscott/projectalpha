@@ -18,7 +18,6 @@ module.exports = Backbone.View.extend({
 			collection: this.model.get('projects'),
 			el: this.el
 		});
-		console.log('rendering app view');
 		return this;
 	}
 

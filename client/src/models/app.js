@@ -23,5 +23,4 @@ module.exports = Backbone.Model.extend({
 		sector: ''
 	}
 
-
 });

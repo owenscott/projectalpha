@@ -1,31 +1,26 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
-
-var projectPageView = require('./project-page.js');
 Backbone.$ = $;
+
+var ContractView = require('./contract');
 
 module.exports = Backbone.View.extend({
 
 	tagName:'div',
 
-	initialize: function() {
 
-		console.log(this.model);
-		this.render();
+	initialize: function() {
+		this.collection.bind('sync', this.render, this);
 	},
 
 	render: function() {
-		this.$el.html( this.template( this.model.attributes ) );
-		return this;
-	},
+		_.each(this.collection.models, function(model) {
 
-	template: _.template('<% if (projectTitle && devtPartner) { %>' +
-		'<div class="row-fluid">' +
-		'<h2>Project Title: <%= projectTitle %></h2>' +
-		'<h2>Development Partner: <%= devtPartner %></h2>' +
-		'</div>' +
-		'<%}%> '
-	)
+			this.$el.append(new IndividualProjectSummaryView({model:model}).render().el);
+		}, this);
+		return this;
+	}
+
 
 });

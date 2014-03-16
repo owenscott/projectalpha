@@ -1,6 +1,9 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
+var fs = require('fs');
+
+var projectPageTemplate = fs.readFileSync(__dirname + '/../templates/project-page.tmpl');
 
 var ProjectOverviewView = require('./project-overview-page.js');
 var projectPageView = require('./project-page.js');
@@ -11,7 +14,7 @@ module.exports = Backbone.View.extend({
 	tagName:'div',
 
 	events: {
-		'click .btn#add-contract' : 'addContract',
+		'click .btn' : 'addContract',
 		'click .btn.back' : 'backToMainPage'
 	},
 
@@ -25,22 +28,12 @@ module.exports = Backbone.View.extend({
 		return this;
 	},
 
-	template: _.template('<button class="btn back">Back</button>' +
-		'<% if (projectTitle && devtPartner) { %>' +
-		'<h2>Project Title: <%= projectTitle %></h2>' +
-		'<h2>Development Partner: <%= devtPartner %></h2>' +
-		'<%}%> ' +
-		'<div class="contract-section>' +
-		'<div class="contracts">' +
-		'</div>' +
-		'<button class="btn" id="add-contract">Add Contract</button>' +
-		'</div>'
-	),
+	template: _.template(projectPageTemplate),
 
 	addContract: function() {
 		var projectContracts = this.model.get('contracts');
 		projectContracts.create();
-		console.log(projectContracts);
+		console.log(this.model.get('contracts'));
 	},
 
 	backToMainPage: function() {

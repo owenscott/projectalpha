@@ -287,10 +287,13 @@ module.exports = Backbone.View.extend({
 
 });
 },{"./project-summary":11,"backbone":12,"jquery":15,"underscore":16}],11:[function(require,module,exports){
-var $ = require('jquery');
+var Buffer=require("__browserify_Buffer");var $ = require('jquery');
 var _ = require('underscore');
+var fs = require('fs');
 var Backbone = require('backbone');
 
+
+var projectSummaryTemplate = Buffer("PCUgaWYgKHByb2plY3RUaXRsZSAmJiBkZXZ0UGFydG5lcikgeyAlPg0KCTxhIGhyZWY9IiMiPg0KCQk8aDM+PCU9IHByb2plY3RUaXRsZSAlPiAoPCU9IGRldnRQYXJ0bmVyICU+KTwvaDM+DQoJPC9hPg0KPCV9JT4=","base64");
 var ProjectPageView = require('./project-page.js');
 Backbone.$ = $;
 
@@ -311,7 +314,7 @@ module.exports = Backbone.View.extend({
 		return this;
 	},
 
-	template: _.template('<% if (projectTitle && devtPartner) { %><a href="#"><h3><%= projectTitle %> (<%= devtPartner %>)</h3></a><%}%>'),
+	template: _.template(projectSummaryTemplate),
 
 	projectClick: function() {
 		// this.$el.parent().html(new ProjectPageView({model:this.model}).render().el);
@@ -319,7 +322,7 @@ module.exports = Backbone.View.extend({
 	}
 
 });
-},{"./project-page.js":9,"backbone":12,"jquery":15,"underscore":16}],12:[function(require,module,exports){
+},{"./project-page.js":9,"__browserify_Buffer":14,"backbone":12,"fs":13,"jquery":15,"underscore":16}],12:[function(require,module,exports){
 //     Backbone.js 1.1.0
 
 //     (c) 2010-2011 Jeremy Ashkenas, DocumentCloud Inc.

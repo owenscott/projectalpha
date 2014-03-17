@@ -4,9 +4,6 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 var contractTemplate = fs.readFileSync(__dirname + '/../templates/contract.tmpl')
 
-
-
-
 Backbone.$ = $;
 
 module.exports = Backbone.View.extend({

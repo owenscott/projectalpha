@@ -1,7 +1,10 @@
 var $ = require('jquery');
 var _ = require('underscore');
+var fs = require('fs');
 var Backbone = require('backbone');
 
+
+var projectSummaryTemplate = fs.readFileSync(__dirname + '/../templates/project-summary.tmpl');
 var ProjectPageView = require('./project-page.js');
 Backbone.$ = $;
 
@@ -22,7 +25,7 @@ module.exports = Backbone.View.extend({
 		return this;
 	},
 
-	template: _.template('<% if (projectTitle && devtPartner) { %><a href="#"><h3><%= projectTitle %> (<%= devtPartner %>)</h3></a><%}%>'),
+	template: _.template(projectSummaryTemplate),
 
 	projectClick: function() {
 		// this.$el.parent().html(new ProjectPageView({model:this.model}).render().el);

@@ -1,1 +1,1 @@
-module.exports = '<li><%= name %></li>';
+<li><%= name %></li>

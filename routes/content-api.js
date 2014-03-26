@@ -25,8 +25,12 @@ module.exports = function(server) {
 
 	//this needs to be configured properly
 	var mainJs = function (request, reply) {
-		reply(fs.createReadStream('./public/js/main.js'));
+		reply(fs.createReadStream('./public/js/app.js'));
 	};
+
+	var mainCss = function (request, reply) {
+		reply(fs.createReadStream('./public/css/style.css'));
+	}
 
 	var apiDocumentation = function (request, reply) {
 		var html = '<html><head><style>td { border: solid 1px black;}</style></head><body><table style="border: solid 1px black"><thead><tr><th>Route</th><th>Method</th><th>Description</th></thead><tbody>';
@@ -51,13 +55,20 @@ module.exports = function(server) {
 		},
 		{
 			method:'GET',
-			path:'/js/main.js',
+			path:'/js/app.js',
 			config: {
 				handler: mainJs,
 				auth:false
 			}
 		},
-		,
+		{
+			method:'GET',
+			path: '/css/style.css',
+			config: {
+				handler: mainCss,
+				auth:false
+			}
+		},
 		{
 			method:'GET',
 			path:'/api-documentation',

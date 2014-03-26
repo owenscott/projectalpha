@@ -14,7 +14,7 @@ module.exports = Backbone.View.extend({
 	},
 
 	render: function() {
-		var listView = new ProjectListView({
+		var listView = new ContractListView({
 			collection:this.collection,
 			el: this.el
 		});

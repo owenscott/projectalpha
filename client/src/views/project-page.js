@@ -25,6 +25,8 @@ module.exports = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html( this.template( this.model.attributes ) );
+		this.$el.append('<h1>asdfasdgasdfasdfasd</h1>')
+		console.log('rendering');
 		return this;
 	},
 
@@ -33,12 +35,9 @@ module.exports = Backbone.View.extend({
 	addContract: function() {
 		var projectContracts = this.model.get('contracts');
 		projectContracts.create();
-		console.log(this.model.get('contracts'));
 	},
 
 	backToMainPage: function() {
-		console.log(this.model);
-		console.log(ProjectOverviewView);
 		var mainPage = new ProjectOverviewView({
 			$el:this.$el.parent(),
 			collection:this.model.collection

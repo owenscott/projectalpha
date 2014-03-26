@@ -14,7 +14,8 @@ var paths = {
 gulp.task('buildJs', function() {
 	gulp.src('client/src/app.js')
 	.pipe(browserify({
-		transform: [brfs]
+		transform: [brfs],
+		debug: true
 	}))
 	.pipe(rename('app.js'))
 	.pipe(gulp.dest('./public/js'))

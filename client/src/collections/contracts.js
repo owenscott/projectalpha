@@ -19,8 +19,6 @@ module.exports = Backbone.Collection.extend({
 	},
 
 	onAdd: function(model) {
-		console.log(model.attributes);
-		console.log(model);
 		model.set('amount', 50000);
 	}
 

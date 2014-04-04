@@ -4,7 +4,7 @@ var fs = require('fs');
 var Backbone = require('backbone');
 
 
-var projectSummaryTemplate = fs.readFileSync(__dirname + '/../templates/project-summary.tmpl');
+var projectSummaryTemplate = fs.readFileSync(__dirname + '/../templates/project-summary.tmpl', 'utf8');
 var ProjectPageView = require('./project-page.js');
 Backbone.$ = $;
 

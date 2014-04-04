@@ -3,7 +3,7 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 var fs = require('fs');
 
-var projectPageTemplate = fs.readFileSync(__dirname + '/../templates/project-page.tmpl');
+var projectPageTemplate = fs.readFileSync(__dirname + '/../templates/project-page.tmpl', 'utf8');
 
 var ProjectOverviewView = require('./project-overview-page.js');
 var projectPageView = require('./project-page.js');
@@ -39,7 +39,7 @@ module.exports = Backbone.View.extend({
 
 	backToMainPage: function() {
 		var mainPage = new ProjectOverviewView({
-			$el:this.$el.parent(),
+			el:this.$el.parent(),
 			collection:this.model.collection
 		});
 

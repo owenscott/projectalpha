@@ -15,7 +15,6 @@ module.exports = function (ListView) {
 
 		render: function() {
 			_.each(this.collection.models, function(model) {
-
 				this.$el.append(new ListView({model:model}).render().el);
 			}, this);
 			return this;

@@ -7,7 +7,6 @@ var ContractListView = require('./contract-list.js');
 
 module.exports = Backbone.View.extend({
 
-
 	initialize: function() {
 
 		this.render();
@@ -20,6 +19,5 @@ module.exports = Backbone.View.extend({
 		});
 		return this;
 	}
-
 
 });

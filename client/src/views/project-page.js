@@ -4,9 +4,11 @@ var Backbone = require('backbone');
 var fs = require('fs');
 
 var projectPageTemplate = fs.readFileSync(__dirname + '/../templates/project-page.tmpl', 'utf8');
-
 var ProjectOverviewView = require('./project-overview-page.js');
 var projectPageView = require('./project-page.js');
+
+
+
 Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
@@ -19,14 +21,12 @@ module.exports = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		this.model.get('contracts').on('add', function() {console.log('we got a new contract!');});
+		this.model.get('contracts').on('add', function() {});
 		this.render();
 	},
 
 	render: function() {
 		this.$el.html( this.template( this.model.attributes ) );
-		this.$el.append('<h1>asdfasdgasdfasdfasd</h1>')
-		console.log('rendering');
 		return this;
 	},
 
@@ -38,8 +38,9 @@ module.exports = Backbone.View.extend({
 	},
 
 	backToMainPage: function() {
+		debug;
 		var mainPage = new ProjectOverviewView({
-			el:this.$el.parent(),
+			el:this.$el.parent,
 			collection:this.model.collection
 		});
 

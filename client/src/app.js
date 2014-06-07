@@ -8,10 +8,7 @@ var $ = require('jquery');
 var AppModel = require('./models/app.js');
 var AppView = require('./views/app.js');
 
-
-
 (function() {
-
 
 	// var projects = new ProjectCollection();
 	// projects.url = '/api/projects';
@@ -22,5 +19,4 @@ var AppView = require('./views/app.js');
 		el: $('#app-container')
 	});
 	
-
 })();

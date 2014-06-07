@@ -11,8 +11,6 @@ module.exports = Backbone.View.extend({
 	tagName:'div',
 
 	initialize: function() {
-
-		console.log(this.model);
 		this.render();
 	},
 
